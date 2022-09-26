@@ -45,7 +45,7 @@ export default function ListingPage() {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Mumbai);
+        switchNetwork && switchNetwork(ChainId.Polygon);
         return;
       }
 
@@ -54,7 +54,7 @@ export default function ListingPage() {
         await marketplace?.direct.makeOffer(
           listingId, // The listingId of the listing we want to make an offer for
           1, // Quantity = 1
-          NATIVE_TOKENS[ChainId.Rinkeby].wrapped.address, // Wrapped Ether address on Rinkeby
+          NATIVE_TOKENS[ChainId.Polygon].wrapped.address, // Wrapped Ether address on Rinkeby
           bidAmount // The offer amount the user entered
         );
       }
@@ -79,7 +79,7 @@ export default function ListingPage() {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Mumbai);
+        switchNetwork && switchNetwork(ChainId.Polygon);
         return;
       }
 

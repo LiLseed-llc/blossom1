@@ -12,15 +12,12 @@ export default function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.left}>
-        <Link href="/" passHref>
+        <Link href="https://www.blossom-a.net/" passHref>
           <img
             src={`/logo.png`}
             alt="Thirdweb Logo"
             className={styles.headerLogo}
           />
-        </Link>
-        <Link href="/listings">
-          <a className={styles.headerItem}>Listings</a>
         </Link>
       </div>
 

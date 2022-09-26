@@ -21,10 +21,10 @@ const Create = () => {
   const [, switchNetwork] = useNetwork();
   const sdk = useSDK();
   const nftCollection = useNFTCollection(
-    "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2"
+    "0x96933c9Caa11aB38Bf39614eC93365350c21C3dd"
   );
   const marketplace = useMarketplace(
-    "0x4719c1737a69b50Ed303E01f7725Cc8aEd855Be1"
+    "0x6A54285e1daBDbc45270226674c467e7BeCBb872"
   );
   const { mutate: makeDirectListing } = useCreateDirectListing(marketplace);
   const { mutate: makeAuctionListing } = useCreateAuctionListing(marketplace);
@@ -52,7 +52,7 @@ const Create = () => {
 
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork?.(ChainId.Goerli);
+        switchNetwork?.(ChainId.Polygon);
         return;
       }
 
@@ -83,16 +83,7 @@ const Create = () => {
       // For Direct Listings:
       if (listingType.value === "directListing") {
         transactionResult = await createDirectListing(
-          "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
-          mintedTokenId,
-          price.value
-        );
-      }
-
-      // For Auction Listings:
-      if (listingType.value === "auctionListing") {
-        transactionResult = await createAuctionListing(
-          "0x5e0d08BF82f40b80DF1beb1874D04C1416BCc8B2",
+          "0x6A54285e1daBDbc45270226674c467e7BeCBb872",
           mintedTokenId,
           price.value
         );
@@ -174,33 +165,10 @@ const Create = () => {
         {/* Form Section */}
         <div className={styles.collectionContainer}>
           <h1 className={styles.ourCollection}>
-            Upload your NFT to the marketplace:
+            作品のアップロード
           </h1>
 
           {/* Toggle between direct listing and auction listing */}
-          <div className={styles.listingTypeContainer}>
-            <input
-              type="radio"
-              name="listingType"
-              id="directListing"
-              value="directListing"
-              defaultChecked
-              className={styles.listingType}
-            />
-            <label htmlFor="directListing" className={styles.listingTypeLabel}>
-              Direct Listing
-            </label>
-            <input
-              type="radio"
-              name="listingType"
-              id="auctionListing"
-              value="auctionListing"
-              className={styles.listingType}
-            />
-            <label htmlFor="auctionListing" className={styles.listingTypeLabel}>
-              Auction Listing
-            </label>
-          </div>
 
           {file ? (
             <img
@@ -218,12 +186,12 @@ const Create = () => {
                 setFile(e.dataTransfer.files[0]);
               }}
             >
-              Drag and drop an image here to upload it!
+              作品をドラッグ＆ドロップorアップロード
             </div>
           )}
           <input
             type="file"
-            accept="image/png, image/gif, image/jpeg"
+            accept="image/png, image/gif, image/jpeg, audio/mpeg, video/mpeg, video/mp4"
             id="profile-picture-input"
             ref={fileInputRef}
             style={{ display: "none" }}
@@ -234,7 +202,7 @@ const Create = () => {
             type="text"
             name="name"
             className={styles.textInput}
-            placeholder="Name"
+            placeholder="作品名"
             style={{ minWidth: "320px" }}
           />
 
@@ -243,7 +211,7 @@ const Create = () => {
             type="text"
             name="description"
             className={styles.textInput}
-            placeholder="Description"
+            placeholder="作品の説明"
             style={{ minWidth: "320px" }}
           />
 
@@ -252,7 +220,7 @@ const Create = () => {
             type="text"
             name="price"
             className={styles.textInput}
-            placeholder="Price (in ETH)"
+            placeholder="売値（MATIC単位）"
             style={{ minWidth: "320px" }}
           />
 
@@ -261,9 +229,18 @@ const Create = () => {
             className={styles.mainButton}
             style={{ marginTop: 32, borderStyle: "none" }}
           >
-            Mint + List NFT
+            出品する
           </button>
         </div>
+
+        <div style={{ marginTop: 32, marginBottom: 32 }}>
+          <a
+            className={styles.mainButton}
+            href="https://blossom-a-lilseed-llc.vercel.app/">
+            MarketPlace TOP
+          </a>
+        </div>
+
       </div>
     </form>
   );

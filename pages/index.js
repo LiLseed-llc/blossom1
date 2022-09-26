@@ -186,7 +186,7 @@ const Create = () => {
                 setFile(e.dataTransfer.files[0]);
               }}
             >
-              作品をドラッグ＆ドロップorアップロード
+              作品のドラッグ＆ドロップorアップロード
             </div>
           )}
           <input
